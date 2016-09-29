@@ -16,13 +16,15 @@ int main(int argc, char const *argv[])
     int N = atoi(argv[1]);
     int i, loop = 25;
 
+    printf("%d ",N);
+	
     // Baseline
     clock_gettime(CLOCK_ID, &start);
     for(i = 0; i < loop; i++) {
         compute_pi_baseline(N);
     }
     clock_gettime(CLOCK_ID, &end);
-    printf("%lf,", (double) (end.tv_sec - start.tv_sec) +
+    printf("%lf ", (double) (end.tv_sec - start.tv_sec) +
            (end.tv_nsec - start.tv_nsec)/ONE_SEC);
 
 
@@ -32,7 +34,7 @@ int main(int argc, char const *argv[])
         compute_pi_openmp(N, 2);
     }
     clock_gettime(CLOCK_ID, &end);
-    printf("%lf,", (double) (end.tv_sec - start.tv_sec) +
+    printf("%lf ", (double) (end.tv_sec - start.tv_sec) +
            (end.tv_nsec - start.tv_nsec)/ONE_SEC);
 
 
@@ -42,7 +44,7 @@ int main(int argc, char const *argv[])
         compute_pi_openmp(N, 4);
     }
     clock_gettime(CLOCK_ID, &end);
-    printf("%lf,", (double) (end.tv_sec - start.tv_sec) +
+    printf("%lf ", (double) (end.tv_sec - start.tv_sec) +
            (end.tv_nsec - start.tv_nsec)/ONE_SEC);
 
 
@@ -52,7 +54,7 @@ int main(int argc, char const *argv[])
         compute_pi_avx(N);
     }
     clock_gettime(CLOCK_ID, &end);
-    printf("%lf,", (double) (end.tv_sec - start.tv_sec) +
+    printf("%lf ", (double) (end.tv_sec - start.tv_sec) +
            (end.tv_nsec - start.tv_nsec)/ONE_SEC);
 
 
